@@ -1,4 +1,4 @@
-package tokenbucket
+package ratelimiter
 
 import (
 	"sync"
