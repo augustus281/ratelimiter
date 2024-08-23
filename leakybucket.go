@@ -23,6 +23,9 @@ func NewLeakyBucket(capacity, leakRate int) *LeakyBucket {
 }
 
 func (lb *LeakyBucket) AllowRequest() bool {
+	lb.Mutex.Lock()
+	defer lb.Mutex.Unlock()
+
 	now := time.Now()
 	leakedTime := now.Sub(lb.lastLeak).Seconds()
 
